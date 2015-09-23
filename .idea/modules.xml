@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BatteryReminder.iml" filepath="$PROJECT_DIR$/BatteryReminder.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../PinHandler/pinhandler/pinhandler.iml" filepath="$PROJECT_DIR$/../PinHandler/pinhandler/pinhandler.iml" />
     </modules>
   </component>
 </project>

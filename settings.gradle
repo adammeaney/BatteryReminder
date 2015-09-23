@@ -1,1 +1,3 @@
 include ':app'
+include ':pinhandler'
+project(':pinhandler').projectDir=new File('../PinHandler/pinhandler')

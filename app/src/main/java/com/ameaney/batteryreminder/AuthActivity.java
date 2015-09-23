@@ -4,39 +4,41 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.ameaney.pinhandler.PinStorage;
+import com.ameaney.pinhandler.PinView;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class AuthActivity extends AppCompatActivity
 {
+    @Bind(R.id.pinView)
+    protected PinView _pinView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_auth);
+
+        ButterKnife.bind(this);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
+    public void checkPin(String pin)
     {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_auth, menu);
-        return true;
-    }
+        PinStorage storage = new PinStorage();
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings)
+        if (storage.confirmPin(this, pin))
         {
-            return true;
+            // Go to main activity
+            Toast.makeText(this, "Main", Toast.LENGTH_SHORT).show();
         }
-
-        return super.onOptionsItemSelected(item);
+        else
+        {
+            Toast.makeText(this, "Pin did not match saved pin.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
