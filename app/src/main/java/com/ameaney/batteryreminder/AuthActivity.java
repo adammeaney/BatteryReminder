@@ -25,6 +25,8 @@ public class AuthActivity extends AppCompatActivity
         setContentView(R.layout.activity_auth);
 
         ButterKnife.bind(this);
+
+        getSupportActionBar().setTitle("Enter Pin");
     }
 
     public void checkPin(String pin)
