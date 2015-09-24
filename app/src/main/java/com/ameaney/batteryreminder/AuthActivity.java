@@ -1,5 +1,6 @@
 package com.ameaney.batteryreminder;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,17 +15,12 @@ import butterknife.ButterKnife;
 
 public class AuthActivity extends AppCompatActivity
 {
-    @Bind(R.id.pinView)
-    protected PinView _pinView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_auth);
-
-        ButterKnife.bind(this);
 
         getSupportActionBar().setTitle("Enter Pin");
     }
@@ -35,8 +31,10 @@ public class AuthActivity extends AppCompatActivity
 
         if (storage.confirmPin(this, pin))
         {
-            // Go to main activity
-            Toast.makeText(this, "Main", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, SetupActivity.class);
+            startActivity(intent);
+            finish();
         }
         else
         {

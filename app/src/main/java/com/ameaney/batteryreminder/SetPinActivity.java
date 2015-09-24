@@ -36,7 +36,6 @@ public class SetPinActivity extends AppCompatActivity
         PinStorage storage = new PinStorage();
         if (storage.hasPin(this))
         {
-            Toast.makeText(this, "Show Auth", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, AuthActivity.class);
             startActivity(intent);
             finish();
@@ -59,8 +58,10 @@ public class SetPinActivity extends AppCompatActivity
             PinStorage storage = new PinStorage();
             if (storage.setPin(this, pin))
             {
-                // Go to main page
-                Toast.makeText(this, "Main", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Pin set!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, SetupActivity.class);
+                startActivity(intent);
+                finish();
             }
             else
             {
